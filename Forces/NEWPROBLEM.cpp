@@ -8,7 +8,7 @@ int main() {
     for(int i=0;i<n;i++)
         cin>>a,s+=a+"#";
 
-    cout<<s<<endl;
+    //cout<<s<<endl;
     for(int i='a';i<='z';i++)
         if(s.find(i)==-1)
             return cout<<(char)i, 0;
