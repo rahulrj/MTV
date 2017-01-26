@@ -1,3 +1,5 @@
+https://www.hackerrank.com/challenges/richie-rich
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
