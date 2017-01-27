@@ -1,3 +1,5 @@
+https://www.hackerrank.com/challenges/bear-and-steady-gene
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -21,7 +23,7 @@ int main() {
     memset(freq,0,sizeof(freq));
     for(ll i=0;i<n;i++){
         ++freq[pos(i)];
-    } 
+    }
     if(is_ok()) {
         cout<<0<<endl;
         return 0;
