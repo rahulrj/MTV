@@ -1,4 +1,3 @@
-https://www.hackerrank.com/challenges/extra-long-factorials
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -17,7 +16,7 @@ string addd(string prev,string res){
 
     int carry=0;
 
-    //cout<<minlen<<endl;
+    //cout<<"Addhere"<<prev<<" "<<resnew<<endl;
 
     for(int i=0;i<minlen;i++){
         int sum=carry+(prev[i]-'0')+(resnew[i]-'0');
@@ -30,7 +29,7 @@ string addd(string prev,string res){
 
     for(int i=minlen;i<len1;i++){
         int sum=carry+(prev[i]-'0');
-        cout<<"S1"<<sum<<endl;
+        //cout<<"S1"<<sum<<endl;
         int rem=sum%10;
         carry=sum/10;
         ans+=std::to_string(rem);
@@ -43,13 +42,13 @@ string addd(string prev,string res){
         int rem=sum%10;
         carry=sum/10;
         ans+=std::to_string(rem);
-        cout<<"S"<<ans<<endl;
+        //cout<<"S"<<ans<<endl;
     }
     if(carry>0){
     	ans+=std::to_string(carry);
     }
 
-    std::reverse(ans.begin(),ans.end());
+    std::reverse(res.begin(),res.end());
     return ans;
 
     //cout<<ans<<endl;
@@ -75,11 +74,14 @@ int main() {
         int carry=0;
         for(int i=len2-1;i>=0;i--){
             res="";
+            carry=0;
+            res = std::string( len2-1-i, '0').append(res);
             for(int j=len1-1;j>=0;j--){
-                res = std::string( len1-j, '0').append(res);
+                //cout<<"Res1"<<res<<endl;
                 int m1=s2[i]-'0';
                 int m2=s1[j]-'0';
                 int mul=carry+(m1*m2);
+                //cout<<"Mul"<<mul<<endl;
                 int quo=mul;
                 if(j!=0){
                     carry=mul/10;
@@ -87,15 +89,23 @@ int main() {
                 }
                 string quos=std::to_string(quo);
                 std::reverse(quos.begin(), quos.end());
+
+                //cout<<"quos"<<quos<<endl;
                 res+=quos;
+                //cout<<"Res2"<<res<<endl;
             }
 
             if(prev.length()>0){
+                //cout<<"Add"<<endl;
                 res=addd(prev,res);
             }
+
             prev=res;
+            std::reverse(res.begin(), res.end());
+
         }
 
+        //cout<<"res"<<res<<endl;
         s1=res;
         n2=n2-1;
     }
