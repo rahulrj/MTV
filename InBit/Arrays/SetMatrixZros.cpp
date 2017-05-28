@@ -1,59 +1,65 @@
-https://www.interviewbit.com/problems/set-matrix-zeros/
+void Solution::setZeroes(vector<vector<int> > &A) {
+	int col=-1;
+	int row=-1;
+
+	int rownum=A.size();
+	int colnum=A[0].size();
+
+	for(int i=0;i<rownum;i++){
+	    for(int j=0;j<colnum;j++){
+
+	        if(A[i][j]==0){
+
+	            if(i==0){
+	                row=0;
+	            }
+	            else{
+	               A[i][0]=2;
+	            }
+
+	            if(j==0){
+	                col=0;
+	            }
+	            else{
+	               A[0][j]=2;
+	            }
+
+	        }
+	    }
+	}
 
 
-class Solution {
-    public:
-        void setZeroes(vector<vector<int> > &matrix) {
-            int rownum = matrix.size();
-            if (rownum == 0)  return;
-            int colnum = matrix[0].size();
-            if (colnum == 0)  return;
+	for(int i=1;i<rownum;i++){
+	    for(int j=1;j<colnum;j++){
 
-            bool hasZeroFirstRow = false, hasZeroFirstColumn = false;
+	        if(A[i][0]==2 || A[0][j]==2){
+	            A[i][j]=0;
+	        }
+	    }
+	}
 
-            // Does first row have zero?
-            for (int j = 0; j < colnum; ++j) {
-                if (matrix[0][j] == 0) {
-                    hasZeroFirstRow = true;
-                    break;
-                }
-            }
+	for(int i=0;i<colnum;i++){
+	    if(A[0][i]==2){
+	        A[0][i]=0;
+	    }
 
-            // Does first column have zero?
-            for (int i = 0; i < rownum; ++i) {
-                if (matrix[i][0] == 0) {
-                    hasZeroFirstColumn = true;
-                    break;
-                }
-            }
+	    if(row==0){
+	        A[0][i]=0;
+	    }
+	}
 
-            // find zeroes and store the info in first row and column
-            for (int i = 1; i < rownum; ++i) {
-                for (int j = 1; j < colnum; ++j) {
-                    if (matrix[i][j] == 0) {
-                        matrix[i][0] = 0;
-                        matrix[0][j] = 0;
-                    }
-                }
-            }
+		for(int i=0;i<rownum;i++){
+	    if(A[i][0]==2){
+	        A[i][0]=0;
+	    }
 
-            // set zeroes except the first row and column
-            for (int i = 1; i < rownum; ++i) {
-                for (int j = 1; j < colnum; ++j) {
-                    if (matrix[i][0] == 0 || matrix[0][j] == 0)  matrix[i][j] = 0;
-                }
-            }
+	    if(col==0){
+	        A[i][0]=0;
+	    }
+	}
 
-            // set zeroes for first row and column if needed
-            if (hasZeroFirstRow) {
-                for (int j = 0; j < colnum; ++j) {
-                    matrix[0][j] = 0;
-                }
-            }
-            if (hasZeroFirstColumn) {
-                for (int i = 0; i < rownum; ++i) {
-                    matrix[i][0] = 0;
-                }
-            }
-        }
-};
+
+
+
+
+}
